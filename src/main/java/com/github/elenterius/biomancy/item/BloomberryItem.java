@@ -14,27 +14,4 @@ public class BloomberryItem extends SimpleItem {
 	public BloomberryItem(Properties properties) {
 		super(properties);
 	}
-
-	private static void applyPotion(LivingEntity livingEntity, Potion potion) {
-		for (MobEffectInstance effectInstance : potion.getEffects()) {
-			if (effectInstance.getEffect().isInstantenous()) {
-				effectInstance.getEffect().applyInstantenousEffect(livingEntity, livingEntity, livingEntity, effectInstance.getAmplifier(), 1);
-			}
-			else {
-				livingEntity.addEffect(new MobEffectInstance(effectInstance));
-			}
-		}
-	}
-
-	@Override
-	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-		ItemStack result = livingEntity.eat(level, stack);
-
-		if (!level.isClientSide) {
-			Collection<Potion> potions = ForgeRegistries.POTIONS.getValues();
-			potions.stream().skip(level.random.nextInt(potions.size())).findFirst().ifPresent(potion -> applyPotion(livingEntity, potion));
-		}
-
-		return result;
-	}
 }

@@ -193,23 +193,23 @@ public class VanillaRecipeProvider extends RecipeProvider {
 	}
 
 	private void buildMiscRecipes(Consumer<FinishedRecipe> consumer) {
-		SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.STONE_POWDER.get()), RecipeCategory.BUILDING_BLOCKS, Items.GLASS_PANE, 0.01f, 100)
+		SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.STONE_POWDER.get()), RecipeCategory.MISC, Items.GLASS_PANE, 0.01f, 100)
 				.unlockedBy(hasName(ModItems.STONE_POWDER.get()), has(ModItems.STONE_POWDER.get())).save(consumer, getBlastingRecipeId(Items.GLASS_PANE));
 
-		WorkbenchRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Items.DIORITE)
+		WorkbenchRecipeBuilder.shapeless(RecipeCategory.MISC, Items.DIORITE)
 				.requires(Items.COBBLESTONE)
 				.requires(ModItems.MINERAL_FRAGMENT.get())
 				.requires(ModItems.STONE_POWDER.get())
 				.unlockedBy(ModItems.STONE_POWDER.get())
 				.save(consumer, getConversionRecipeId(Items.DIORITE, ModItems.STONE_POWDER.get()));
 
-		WorkbenchRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Items.GRANITE)
+		WorkbenchRecipeBuilder.shapeless(RecipeCategory.MISC, Items.GRANITE)
 				.requires(Items.DIORITE)
 				.requires(ModItems.MINERAL_FRAGMENT.get(), 2)
 				.unlockedBy(ModItems.MINERAL_FRAGMENT.get())
 				.save(consumer, getConversionRecipeId(Items.GRANITE, ModItems.MINERAL_FRAGMENT.get()));
 
-		WorkbenchRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Items.RED_SAND)
+		WorkbenchRecipeBuilder.shapeless(RecipeCategory.MISC, Items.RED_SAND)
 				.requires(Items.SAND)
 				.requires(ModItems.MINERAL_FRAGMENT.get(), 2)
 				.unlockedBy(ModItems.MINERAL_FRAGMENT.get())
@@ -315,7 +315,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		stonecutting(consumer, ModItems.SMOOTH_PRIMAL_FLESH_STAIRS.get(), ModItems.SMOOTH_PRIMAL_FLESH_BLOCK.get());
 		stonecutting(consumer, ModItems.SMOOTH_PRIMAL_FLESH_WALL.get(), ModItems.SMOOTH_PRIMAL_FLESH_BLOCK.get());
 
-		WorkbenchRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.FIBROUS_PRIMAL_FLESH_BLOCK.get())
+		WorkbenchRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FIBROUS_PRIMAL_FLESH_BLOCK.get())
 				.requires(ModItems.SMOOTH_PRIMAL_FLESH_BLOCK.get())
 				.unlockedBy(ModItems.SMOOTH_PRIMAL_FLESH_BLOCK.get())
 				.save(consumer);
@@ -327,7 +327,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 		stonecutting(consumer, ModItems.FIBROUS_PRIMAL_FLESH_STAIRS.get(), ModItems.FIBROUS_PRIMAL_FLESH_BLOCK.get());
 		stonecutting(consumer, ModItems.FIBROUS_PRIMAL_FLESH_WALL.get(), ModItems.FIBROUS_PRIMAL_FLESH_BLOCK.get());
 
-		WorkbenchRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.POROUS_PRIMAL_FLESH_BLOCK.get(), 4)
+		WorkbenchRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POROUS_PRIMAL_FLESH_BLOCK.get(), 4)
 				.define('M', ModItems.MALIGNANT_FLESH_BLOCK.get())
 				.define('P', ModItems.PRIMAL_FLESH_BLOCK.get())
 				.pattern("PM")
@@ -416,19 +416,19 @@ public class VanillaRecipeProvider extends RecipeProvider {
 	}
 
 	protected void polished(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike ingredient) {
-		WorkbenchRecipeBuilder.polished(RecipeCategory.BUILDING_BLOCKS, result, ingredient).save(consumer);
+		WorkbenchRecipeBuilder.polished(RecipeCategory.MISC, result, ingredient).save(consumer);
 	}
 
 	protected void slab(Consumer<FinishedRecipe> consumer, BlockItem result, BlockItem ingredient) {
-		WorkbenchRecipeBuilder.slab(RecipeCategory.BUILDING_BLOCKS, result, ingredient).save(consumer);
+		WorkbenchRecipeBuilder.slab(RecipeCategory.MISC, result, ingredient).save(consumer);
 	}
 
 	protected void wall(Consumer<FinishedRecipe> consumer, BlockItem result, BlockItem ingredient) {
-		WorkbenchRecipeBuilder.wall(RecipeCategory.BUILDING_BLOCKS, result, ingredient).save(consumer);
+		WorkbenchRecipeBuilder.wall(RecipeCategory.MISC, result, ingredient).save(consumer);
 	}
 
 	protected void stairs(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike ingredient) {
-		WorkbenchRecipeBuilder.stairs(RecipeCategory.BUILDING_BLOCKS, result, ingredient).save(consumer);
+		WorkbenchRecipeBuilder.stairs(RecipeCategory.MISC, result, ingredient).save(consumer);
 	}
 
 	protected void stonecutting(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike ingredient) {
@@ -436,13 +436,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 	}
 
 	protected void stonecutting(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike ingredient, int count) {
-		SingleItemRecipeBuilder builder = SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), RecipeCategory.BUILDING_BLOCKS, result, count).unlockedBy(getHasName(ingredient), has(ingredient));
+		SingleItemRecipeBuilder builder = SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), RecipeCategory.MISC, result, count).unlockedBy(getHasName(ingredient), has(ingredient));
 		ResourceLocation recipeName = getStoneCuttingRecipeId(result, ingredient);
 		builder.save(consumer, recipeName);
 	}
 
 	protected void blockFromSlabs(Consumer<FinishedRecipe> consumer, Item result, Item slab) {
-		WorkbenchRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result)
+		WorkbenchRecipeBuilder.shaped(RecipeCategory.MISC, result)
 				.define('S', slab)
 				.pattern(" S ")
 				.pattern(" S ")

@@ -19,7 +19,7 @@ public final class ModBioForgeTabs {
 	public static final Supplier<IForgeRegistry<BioForgeTab>> REGISTRY = BIO_FORGE_TABS.makeRegistry(RegistryBuilder::new);
 
 	public static final RegistryObject<BioForgeTab> SEARCH = register("search", 99, () -> Items.COMPASS);
-	public static final RegistryObject<BioForgeTab> BUILDING_BLOCKS = register("blocks", 10, ModItems.FLESH_BLOCK);
+	public static final RegistryObject<BioForgeTab> ORGAN = register("organ", 10, ModItems.PRIMORDIAL_CORE);
 	public static final RegistryObject<BioForgeTab> MACHINES = register("machines", 9, ModItems.DECOMPOSER);
 	public static final RegistryObject<BioForgeTab> TOOLS = register("tools", 8, ModItems.RAVENOUS_CLAWS);
 	public static final RegistryObject<BioForgeTab> COMPONENTS = register("components", 7, ModItems.CREATOR_MIX);

@@ -2,6 +2,7 @@ package com.github.elenterius.biomancy.entity.mob.fleshblob;
 
 import com.github.elenterius.biomancy.entity.mob.FoodEater;
 import com.github.elenterius.biomancy.entity.mob.ai.goal.FindItemGoal;
+import com.github.elenterius.biomancy.init.tags.ModItemTags;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -87,7 +88,11 @@ public abstract class EaterFleshBlob extends FleshBlob implements FoodEater {
 	@Override
 	public boolean canHoldItem(ItemStack stack) {
 		ItemStack heldStack = getFoodItem();
-		return stack.isEdible() && (heldStack.isEmpty() || !heldStack.getItem().isEdible());
+		return canHoldOrganItem(stack) || (stack.isEdible() && (heldStack.isEmpty() || !heldStack.getItem().isEdible()));
+	}
+
+	public static boolean canHoldOrganItem(ItemStack stack) {
+		return stack.is(ModItemTags.ORGAN) && stack.hasTag() && stack.getTag().contains("chestcavity:organ_compatibility");
 	}
 
 	@Override

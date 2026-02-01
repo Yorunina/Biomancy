@@ -1,6 +1,7 @@
 package com.github.elenterius.biomancy.entity.mob;
 
 import com.github.elenterius.biomancy.entity.mob.ai.goal.FindItemGoal;
+import com.github.elenterius.biomancy.entity.mob.fleshblob.EaterFleshBlob;
 import com.github.elenterius.biomancy.init.ModItems;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.food.FoodProperties;
@@ -20,6 +21,7 @@ public interface PrimordialCradleUser {
 
 		ItemStack stack = itemEntity.getItem();
 		if (SPECIAL_ITEMS_TO_HOLD.contains(stack.getItem())) return true;
+		if (EaterFleshBlob.canHoldOrganItem(stack)) return true;
 		return stack.isEdible() && Optional.ofNullable(stack.getFoodProperties(null)).map(FoodProperties::isMeat).orElse(false);
 	};
 

@@ -1,6 +1,8 @@
 package com.github.elenterius.biomancy.entity.mob.ai.goal;
 
 import com.github.elenterius.biomancy.entity.mob.FoodEater;
+import com.github.elenterius.biomancy.entity.mob.fleshblob.EaterFleshBlob;
+import com.github.elenterius.biomancy.init.tags.ModItemTags;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.food.FoodProperties;
@@ -32,7 +34,7 @@ public class EatFoodItemGoal<T extends PathfinderMob & FoodEater> extends Goal {
 	}
 
 	protected boolean hasEdibleFood() {
-		return mob.getFoodItem().isEdible();
+		return mob.getFoodItem().isEdible() || EaterFleshBlob.canHoldOrganItem(mob.getFoodItem());
 	}
 
 	@Override
@@ -42,7 +44,7 @@ public class EatFoodItemGoal<T extends PathfinderMob & FoodEater> extends Goal {
 
 	@Override
 	public void start() {
-		eatTimer = adjustedTickDelay(mob.getFoodItem().getUseDuration() * 2);
+		eatTimer = adjustedTickDelay(mob.getFoodItem().getItem().isEdible() ? mob.getFoodItem().getUseDuration() * 2 : 600);
 		mob.getNavigation().stop();
 		mob.setEating(true);
 	}
@@ -58,8 +60,17 @@ public class EatFoodItemGoal<T extends PathfinderMob & FoodEater> extends Goal {
 		eatTimer = Math.max(0, eatTimer - 1);
 
 		if (eatTimer == adjustedTickDelay(4)) {
+			ItemStack stack = mob.getFoodItem();
+			if (mob instanceof EaterFleshBlob blob) {
+				if (EaterFleshBlob.canHoldOrganItem(stack)) {
+					stack.removeTagKey("chestcavity:organ_compatibility");
+					blob.spawnAtLocation(stack);
+					blob.setFoodItem(ItemStack.EMPTY);
+					blob.hurt(blob.level().damageSources().magic(), 5f);
+				}
+			}
+
 			if (hasEdibleFood()) {
-				ItemStack stack = mob.getFoodItem();
 				FoodProperties food = stack.getFoodProperties(mob);
 				ItemStack eatenStack = stack.finishUsingItem(mob.level(), mob);
 				if (!eatenStack.isEmpty()) {

@@ -64,7 +64,7 @@ public class DespoilLootModifier extends LootModifier {
 		return entityTypeId.withPrefix(LOOT_PREFIX);
 	}
 
-	protected static int getDespoilLevel(LootContext lootContext) {
+	public static int getDespoilLevel(LootContext lootContext) {
 		Entity killer = lootContext.getParamOrNull(LootContextParams.KILLER_ENTITY);
 		if (killer instanceof LivingEntity livingEntity) {
 			int itemDespoilLevel = ModEnchantments.DESPOIL.get().getSlotItems(livingEntity).values().stream()
@@ -81,11 +81,11 @@ public class DespoilLootModifier extends LootModifier {
 		return 0;
 	}
 
-	protected static int getDespoilLevel(ItemStack stack) {
+	public static int getDespoilLevel(ItemStack stack) {
 		return stack.getEnchantmentLevel(ModEnchantments.DESPOIL.get());
 	}
 
-	protected static boolean isUsingTool(LootContext lootContext) {
+	public static boolean isUsingTool(LootContext lootContext) {
 		Entity killer = lootContext.getParamOrNull(LootContextParams.KILLER_ENTITY);
 
 		if (killer instanceof LivingEntity livingEntity) {
@@ -107,7 +107,7 @@ public class DespoilLootModifier extends LootModifier {
 
 	@NotNull
 	@Override
-	protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+	public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
 		Entity thisEntity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
 
 		if (thisEntity instanceof LivingEntity || thisEntity instanceof Player) {
@@ -132,17 +132,17 @@ public class DespoilLootModifier extends LootModifier {
 		return generatedLoot;
 	}
 
-	private static void getRandomItems(LootTable lootTable, LootParams lootParams, Consumer<ItemStack> output) {
+	public static void getRandomItems(LootTable lootTable, LootParams lootParams, Consumer<ItemStack> output) {
 		//noinspection deprecation
 		lootTable.getRandomItemsRaw(lootParams, output); //we use the 'Raw' method to prevent a stackoverflow caused by calling of ForgeHooks#modifyLoot inside GlobalLootModifiers
 	}
 
-	protected LootTable getLootTable(ServerLevel level, Entity entity) {
+	public static LootTable getLootTable(ServerLevel level, Entity entity) {
 		ResourceLocation lootTableId = getLootTableId(entity.getType());
 		return level.getServer().getLootData().getLootTable(lootTableId);
 	}
 
-	protected LootParams createLootParams(LootContext context) {
+	public LootParams createLootParams(LootContext context) {
 		LootParams.Builder builder = new LootParams.Builder(context.getLevel())
 				.withParameter(LootContextParams.THIS_ENTITY, context.getParam(LootContextParams.THIS_ENTITY))
 				.withParameter(LootContextParams.ORIGIN, context.getParam(LootContextParams.ORIGIN))

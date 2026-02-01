@@ -105,47 +105,47 @@ public class BioForgingRecipeProvider extends RecipeProvider {
 	}
 
 	private void buildBlockRecipes(Consumer<FinishedRecipe> consumer) {
-		BioForgingRecipeBuilder.create(ModItems.FLESH_BLOCK.get()).addIngredient(ModItems.FLESH_BITS.get(), blockCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.FLESH_STAIRS.get()).addIngredient(ModItems.FLESH_BITS.get(), stairsCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.FLESH_SLAB.get()).addIngredient(ModItems.FLESH_BITS.get(), slabCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.FLESH_WALL.get()).addIngredient(ModItems.FLESH_BITS.get(), wallCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.PACKED_FLESH_BLOCK.get()).addIngredient(ModItems.FLESH_BITS.get(), blockCost * 2).addIngredient(ModItems.TOUGH_FIBERS.get(), blockCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.PACKED_FLESH_STAIRS.get()).addIngredient(ModItems.FLESH_BITS.get(), stairsCost * 2).addIngredient(ModItems.TOUGH_FIBERS.get(), stairsCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.PACKED_FLESH_SLAB.get()).addIngredient(ModItems.FLESH_BITS.get(), slabCost * 2).addIngredient(ModItems.TOUGH_FIBERS.get(), slabCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.PACKED_FLESH_WALL.get()).addIngredient(ModItems.FLESH_BITS.get(), wallCost * 2).addIngredient(ModItems.TOUGH_FIBERS.get(), wallCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.FIBROUS_FLESH_BLOCK.get()).addIngredient(ModItems.FLESH_BITS.get(), blockCost / 2).addIngredient(ModItems.ELASTIC_FIBERS.get(), blockCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.FIBROUS_FLESH_STAIRS.get()).addIngredient(ModItems.FLESH_BITS.get(), stairsCost / 2).addIngredient(ModItems.ELASTIC_FIBERS.get(), stairsCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.FIBROUS_FLESH_SLAB.get()).addIngredient(ModItems.FLESH_BITS.get(), slabCost / 2).addIngredient(ModItems.ELASTIC_FIBERS.get(), slabCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
-		BioForgingRecipeBuilder.create(ModItems.FIBROUS_FLESH_WALL.get()).addIngredient(ModItems.FLESH_BITS.get(), wallCost / 2).addIngredient(ModItems.ELASTIC_FIBERS.get(), wallCost).setCategory(ModBioForgeTabs.BUILDING_BLOCKS).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.FLESH_BLOCK.get()).addIngredient(ModItems.FLESH_BITS.get(), blockCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.FLESH_STAIRS.get()).addIngredient(ModItems.FLESH_BITS.get(), stairsCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.FLESH_SLAB.get()).addIngredient(ModItems.FLESH_BITS.get(), slabCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.FLESH_WALL.get()).addIngredient(ModItems.FLESH_BITS.get(), wallCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.PACKED_FLESH_BLOCK.get()).addIngredient(ModItems.FLESH_BITS.get(), blockCost * 2).addIngredient(ModItems.TOUGH_FIBERS.get(), blockCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.PACKED_FLESH_STAIRS.get()).addIngredient(ModItems.FLESH_BITS.get(), stairsCost * 2).addIngredient(ModItems.TOUGH_FIBERS.get(), stairsCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.PACKED_FLESH_SLAB.get()).addIngredient(ModItems.FLESH_BITS.get(), slabCost * 2).addIngredient(ModItems.TOUGH_FIBERS.get(), slabCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.PACKED_FLESH_WALL.get()).addIngredient(ModItems.FLESH_BITS.get(), wallCost * 2).addIngredient(ModItems.TOUGH_FIBERS.get(), wallCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.FIBROUS_FLESH_BLOCK.get()).addIngredient(ModItems.FLESH_BITS.get(), blockCost / 2).addIngredient(ModItems.ELASTIC_FIBERS.get(), blockCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.FIBROUS_FLESH_STAIRS.get()).addIngredient(ModItems.FLESH_BITS.get(), stairsCost / 2).addIngredient(ModItems.ELASTIC_FIBERS.get(), stairsCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.FIBROUS_FLESH_SLAB.get()).addIngredient(ModItems.FLESH_BITS.get(), slabCost / 2).addIngredient(ModItems.ELASTIC_FIBERS.get(), slabCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
+		BioForgingRecipeBuilder.create(ModItems.FIBROUS_FLESH_WALL.get()).addIngredient(ModItems.FLESH_BITS.get(), wallCost / 2).addIngredient(ModItems.ELASTIC_FIBERS.get(), wallCost).setCategory(ModBioForgeTabs.MISC).unlockedBy(ModItems.FLESH_BITS.get()).save(consumer);
 
 		BioForgingRecipeBuilder.create(ModItems.CHISELED_FLESH_BLOCK.get())
 				.addIngredient(ModItems.FLESH_BITS.get(), blockCost)
 				.addIngredient(ModItems.BONE_FRAGMENTS.get(), 2)
-				.setCategory(ModBioForgeTabs.BUILDING_BLOCKS)
+				.setCategory(ModBioForgeTabs.MISC)
 				.unlockedBy(ModItems.BONE_FRAGMENTS.get()).save(consumer);
 
 		BioForgingRecipeBuilder.create(ModItems.ORNATE_FLESH_BLOCK.get())
 				.addIngredient(ModItems.FLESH_BITS.get(), blockCost)
 				.addIngredient(ModItems.BONE_FRAGMENTS.get(), 4)
-				.setCategory(ModBioForgeTabs.BUILDING_BLOCKS)
+				.setCategory(ModBioForgeTabs.MISC)
 				.unlockedBy(ModItems.BONE_FRAGMENTS.get()).save(consumer);
 
 		BioForgingRecipeBuilder.create(ModItems.ORNATE_FLESH_SLAB.get())
 				.addIngredient(ModItems.FLESH_BITS.get(), slabCost)
 				.addIngredient(ModItems.BONE_FRAGMENTS.get(), 2)
-				.setCategory(ModBioForgeTabs.BUILDING_BLOCKS)
+				.setCategory(ModBioForgeTabs.MISC)
 				.unlockedBy(ModItems.BONE_FRAGMENTS.get()).save(consumer);
 
 		BioForgingRecipeBuilder.create(ModItems.TUBULAR_FLESH_BLOCK.get())
 				.addIngredient(ModItems.FLESH_BITS.get(), blockCost / 2)
 				.addIngredient(ModItems.ELASTIC_FIBERS.get(), blockCost)
-				.setCategory(ModBioForgeTabs.BUILDING_BLOCKS)
+				.setCategory(ModBioForgeTabs.MISC)
 				.unlockedBy(ModItems.ELASTIC_FIBERS.get()).save(consumer);
 
 		BioForgingRecipeBuilder.create(ModItems.FLESH_PILLAR.get())
 				.addIngredient(ModItems.FLESH_BITS.get(), blockCost / 2)
 				.addIngredient(ModItems.BONE_FRAGMENTS.get(), blockCost / 2)
-				.setCategory(ModBioForgeTabs.BUILDING_BLOCKS)
+				.setCategory(ModBioForgeTabs.MISC)
 				.unlockedBy(ModItems.BONE_FRAGMENTS.get()).save(consumer);
 	}
 

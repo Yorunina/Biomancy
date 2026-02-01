@@ -284,7 +284,7 @@ public class EnglishLangProvider extends AbstractLangProvider {
 		add(ClientTextUtil.getRightMouseKey(), "right mouse");
 
 		addBioForgeTab(ModBioForgeTabs.SEARCH, "All");
-		addBioForgeTab(ModBioForgeTabs.BUILDING_BLOCKS, "Building Blocks");
+		addBioForgeTab(ModBioForgeTabs.ORGAN, "Organ");
 		addBioForgeTab(ModBioForgeTabs.MACHINES, "Machines");
 		addBioForgeTab(ModBioForgeTabs.TOOLS, "Tools");
 		addBioForgeTab(ModBioForgeTabs.COMPONENTS, "Components");

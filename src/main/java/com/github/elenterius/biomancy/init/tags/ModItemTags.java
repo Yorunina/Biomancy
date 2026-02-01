@@ -1,10 +1,12 @@
 package com.github.elenterius.biomancy.init.tags;
 
 import com.github.elenterius.biomancy.BiomancyMod;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 public final class ModItemTags {
 
@@ -18,7 +20,7 @@ public final class ModItemTags {
 	public static final TagKey<Item> FRESH_RAW_MEATS = tag("raw_meats");
 	public static final TagKey<Item> COOKED_MEATS = tag("cooked_meats");
 	public static final TagKey<Item> SUGARS = tag("sugars");
-
+	public static final TagKey<Item> ORGAN = TagKey.create(Registries.ITEM, new ResourceLocation("kubejs", "organ"));
 	public static final TagKey<Item> CANNOT_BE_DIGESTED_IN_ACID = tag("cannot_be_digested_in_acid");
 	public static final TagKey<Item> CANNOT_BE_EATEN_BY_CRADLE = tag("cannot_be_eaten_by_cradle");
 
