@@ -2,7 +2,6 @@ package com.github.elenterius.biomancy.entity.mob.ai.goal;
 
 import com.github.elenterius.biomancy.entity.mob.FoodEater;
 import com.github.elenterius.biomancy.entity.mob.fleshblob.EaterFleshBlob;
-import com.github.elenterius.biomancy.init.tags.ModItemTags;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.food.FoodProperties;
@@ -64,7 +63,7 @@ public class EatFoodItemGoal<T extends PathfinderMob & FoodEater> extends Goal {
 			if (mob instanceof EaterFleshBlob blob) {
 				if (EaterFleshBlob.canHoldOrganItem(stack)) {
 					stack.removeTagKey("chestcavity:organ_compatibility");
-					blob.spawnAtLocation(stack);
+					blob.spawnAtLocation(stack).setPickUpDelay(20 * 3);
 					blob.setFoodItem(ItemStack.EMPTY);
 					blob.hurt(blob.level().damageSources().magic(), 5f);
 				}

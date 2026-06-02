@@ -4,20 +4,28 @@ import com.github.elenterius.biomancy.api.tribute.SacrificeHandler;
 import com.github.elenterius.biomancy.block.cradle.PrimordialCradleBlockEntity;
 import com.github.elenterius.biomancy.block.cradle.PrimordialCradleEvents;
 import dev.latvian.mods.kubejs.event.*;
+import dev.latvian.mods.kubejs.level.LevelEventJS;
 import dev.latvian.mods.kubejs.typings.Info;
 import dev.latvian.mods.kubejs.typings.Param;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-final class BiomancyKJSEvents {
+public final class BiomancyKJSEvents {
 
 	static final EventGroup GROUP = EventGroup.of("BiomancyEvents");
 	static final EventHandler CAN_SPAWN_MOB = GROUP.server("canCradleSpawnMob", () -> CanCradleSpawnMobEventKJS.class);
 	static final EventHandler ON_SPAWN_MOB = GROUP.server("onCradleSpawnMob", () -> OnCradleSpawnMobEventKJS.class);
+	static final EventHandler ORGAN_BLOOM_HARVEST = GROUP.server("onOrganBloomHarvest", () -> OnOrganBloomHarvestEventKJS.class);
 
 	static void canCradleSpawnMob(PrimordialCradleEvents.CanSpawnMob forgeEvent) {
 		if (!CAN_SPAWN_MOB.hasListeners()) return;
@@ -35,6 +43,12 @@ final class BiomancyKJSEvents {
 		if (eventResult.interruptFalse()) {
 			forgeEvent.setCanceled(true);
 		}
+	}
+
+	public static void onOrganBloomHarvest(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		if (!ORGAN_BLOOM_HARVEST.hasListeners()) return;
+
+		EventResult eventResult = ORGAN_BLOOM_HARVEST.post(new OnOrganBloomHarvestEventKJS(state, level, pos, player, hand, hit));
 	}
 
 	@Info("""
@@ -203,4 +217,40 @@ final class BiomancyKJSEvents {
 
 	}
 
+
+	public static class OnOrganBloomHarvestEventKJS extends LevelEventJS {
+		public BlockState blockState;
+		public Level level;
+		public BlockPos pos;
+		public Player player;
+		public InteractionHand hand;
+		public BlockHitResult hit;
+
+		public OnOrganBloomHarvestEventKJS(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+			this.blockState = state;
+			this.level = level;
+			this.pos = pos;
+			this.player = player;
+			this.hand = hand;
+			this.hit = hit;
+		}
+
+		@Override
+		public Level getLevel() {
+			return this.level;
+		}
+
+		public  BlockPos getPos() {
+			return this.pos;
+		}
+		public Player getPlayer() {
+			return this.player;
+		}
+		public InteractionHand getHand() {
+			return this.hand;
+		}
+		public BlockHitResult getHit() {
+			return this.hit;
+		}
+	}
 }

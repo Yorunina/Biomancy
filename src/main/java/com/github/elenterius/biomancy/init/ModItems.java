@@ -232,6 +232,7 @@ public final class ModItems {
 	public static final RegistryObject<SimpleBlockItem> MALIGNANT_FLESH_WALL = registerSimpleBlockItem(ModBlocks.MALIGNANT_FLESH_WALL);
 	public static final RegistryObject<SimpleBlockItem> MALIGNANT_FLESH_VEINS = registerSimpleBlockItem(ModBlocks.MALIGNANT_FLESH_VEINS);
 	public static final RegistryObject<SimpleBlockItem> PRIMAL_BLOOM = registerSimpleBlockItem(ModBlocks.PRIMAL_BLOOM);
+	public static final RegistryObject<SimpleBlockItem> PRIMAL_ORGAN_BLOOM = registerSimpleBlockItem(ModBlocks.PRIMAL_ORGAN_BLOOM);
 	public static final RegistryObject<SimpleBlockItem> BLOOMLIGHT = registerSimpleBlockItem(ModBlocks.BLOOMLIGHT);
 	public static final RegistryObject<SimpleBlockItem> PRIMAL_ORIFICE = registerSimpleBlockItem(ModBlocks.PRIMAL_ORIFICE);
 	public static final RegistryObject<SimpleBlockItem> PRIMAL_BONE = registerSimpleBlockItem(ModBlocks.PRIMAL_BONE);

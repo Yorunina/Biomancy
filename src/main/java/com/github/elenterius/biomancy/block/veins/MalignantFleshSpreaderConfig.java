@@ -21,6 +21,8 @@ import net.minecraft.world.level.material.Fluids;
 
 import java.util.Set;
 
+import static com.github.elenterius.biomancy.block.veins.FleshVeinsBlock.BLOCKS_TO_AVOID_PREDICATE;
+
 class MalignantFleshSpreaderConfig extends MultifaceSpreader.DefaultSpreaderConfig {
 
 	protected static final Set<Block> VALID_SOURCES = Set.of(ModBlocks.MALIGNANT_FLESH_SLAB.get(), ModBlocks.MALIGNANT_FLESH_STAIRS.get(), ModBlocks.MALIGNANT_FLESH.get());
@@ -58,7 +60,7 @@ class MalignantFleshSpreaderConfig extends MultifaceSpreader.DefaultSpreaderConf
 				CellularNoise cellularNoise = PrimordialEcosystem.getCellularNoise(serverLevel);
 				float borderThreshold = cellularNoise.borderThreshold() - 0.005f;
 				float n = cellularNoise.getValueAtCenter(pos);
-				return n >= borderThreshold && !LevelUtil.isBlockNearby(serverLevel, spreadPos.pos(), 4, blockState -> blockState.is(ModBlocks.PRIMAL_BLOOM.get()));
+				return n >= borderThreshold && !LevelUtil.isBlockNearby(serverLevel, spreadPos.pos(), 4, BLOCKS_TO_AVOID_PREDICATE);
 			}
 			return true;
 		}

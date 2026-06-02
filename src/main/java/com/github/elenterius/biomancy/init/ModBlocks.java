@@ -7,6 +7,7 @@ import com.github.elenterius.biomancy.block.base.DirectionalSlabBlock;
 import com.github.elenterius.biomancy.block.bioforge.BioForgeBlock;
 import com.github.elenterius.biomancy.block.biolab.BioLabBlock;
 import com.github.elenterius.biomancy.block.bloom.BloomBlock;
+import com.github.elenterius.biomancy.block.bloom.OrganBloomBlock;
 import com.github.elenterius.biomancy.block.cauldron.AcidCauldron;
 import com.github.elenterius.biomancy.block.chrysalis.ChrysalisBlock;
 import com.github.elenterius.biomancy.block.cradle.PrimordialCradleBlock;
@@ -109,6 +110,8 @@ public final class ModBlocks {
 	public static final RegistryObject<WallBlock> MALIGNANT_FLESH_WALL = registerWall(MALIGNANT_FLESH, WallBlock::new);
 	public static final RegistryObject<FleshVeinsBlock> MALIGNANT_FLESH_VEINS = register("malignant_flesh_veins", () -> new FleshVeinsBlock(createFleshVeinsProperties().noCollission().noOcclusion()));
 	public static final RegistryObject<BloomBlock> PRIMAL_BLOOM = register("primal_bloom", properties -> new BloomBlock(properties.randomTicks().noOcclusion().lightLevel(BloomBlock::getLightEmission)));
+	public static final RegistryObject<OrganBloomBlock> PRIMAL_ORGAN_BLOOM = register("primal_organ_bloom", properties -> new OrganBloomBlock(properties.randomTicks().noOcclusion().lightLevel(OrganBloomBlock::getLightEmission)));
+
 	public static final RegistryObject<Block> BLOOMLIGHT = register("bloomlight", properties -> new Block(properties.sound(SoundType.SHROOMLIGHT).lightLevel(x -> 15)));
 	public static final RegistryObject<OrificeBlock> PRIMAL_ORIFICE = register("primal_orifice", properties -> new OrificeBlock(properties.randomTicks().lightLevel(OrificeBlock.lightEmission(7))));
 	public static final RegistryObject<RotatedPillarBlock> PRIMAL_BONE = register("primal_bone_block", () -> new RotatedPillarBlock(createBoneProperties()));

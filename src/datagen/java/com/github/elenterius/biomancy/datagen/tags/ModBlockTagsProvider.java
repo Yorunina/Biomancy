@@ -88,7 +88,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
 		tag(ModBlockTags.DISALLOW_VEINS_TO_ATTACH).add(
 				ModBlocks.PRIMAL_BLOOM.get(),
-				ModBlocks.PRIMAL_PERMEABLE_MEMBRANE.get()
+				ModBlocks.PRIMAL_PERMEABLE_MEMBRANE.get(),
+				ModBlocks.PRIMAL_ORGAN_BLOOM.get()
 		);
 
 		tag(ModBlockTags.ACID_DESTRUCTIBLE)
@@ -104,6 +105,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 						ModBlocks.MALIGNANT_FLESH_STAIRS.get(),
 						ModBlocks.MALIGNANT_FLESH_WALL.get(),
 						ModBlocks.PRIMAL_BLOOM.get(),
+						ModBlocks.PRIMAL_ORGAN_BLOOM.get(),
 						ModBlocks.BLOOMLIGHT.get(),
 						ModBlocks.PRIMAL_ORIFICE.get(),
 						ModBlocks.PRIMAL_PERMEABLE_MEMBRANE.get(),
@@ -146,6 +148,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 				ModBlocks.MALIGNANT_FLESH_STAIRS.get(),
 				ModBlocks.MALIGNANT_FLESH_WALL.get(),
 				ModBlocks.PRIMAL_BLOOM.get(),
+				ModBlocks.PRIMAL_ORGAN_BLOOM.get(),
 				ModBlocks.PRIMAL_PERMEABLE_MEMBRANE.get(),
 				ModBlocks.PRIMAL_PERMEABLE_MEMBRANE_PANE.get()
 		);

@@ -179,6 +179,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 				ModItems.PRIMORDIAL_CRADLE.get(),
 				ModItems.PRIMORDIAL_CORE.get(),
 				ModItems.PRIMAL_BLOOM.get(),
+				ModItems.PRIMAL_ORGAN_BLOOM.get(),
 				ModItems.BLOOMBERRY.get(),
 				ModItems.BLOOMLIGHT.get(),
 				ModItems.PRIMORDIAL_BIO_LANTERN.get(),

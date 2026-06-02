@@ -53,6 +53,8 @@
   "item.biomancy.nutrient_bar.tooltip": "Nutrient Paste compressed into the shape of a bar. Looks edible, if a bit bland.",
   "item.biomancy.bloomberry": "Bloomberry",
   "item.biomancy.bloomberry.tooltip": "An exotic delicacy which has a bioluminescent sheen and grants random potion effects when eaten.",
+  "block.biomancy.primal_organ_bloom": "Bloomberry",
+  "block.biomancy.primal_organ_bloom.tooltip": "A rare flower with a bioluminescent sheen.\n\nBut it has been too ossificated to emit berries.\nIts berries seem to have turned into strange things.",
   "item.biomancy.regenerative_fluid": "Regenerative Fluid",
   "item.biomancy.regenerative_fluid.tooltip": "A fluid with regenerative properties, used to concoct healing additives.",
   "item.biomancy.withering_ooze": "Withering Ooze",

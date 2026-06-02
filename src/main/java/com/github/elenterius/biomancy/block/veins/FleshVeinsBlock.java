@@ -54,7 +54,7 @@ import java.util.function.Predicate;
 
 public class FleshVeinsBlock extends MultifaceBlock implements SimpleWaterloggedBlock {
 
-	public static final Predicate<BlockState> BLOCKS_TO_AVOID_PREDICATE = blockState -> blockState.is(ModBlocks.PRIMAL_BLOOM.get());
+	public static final Predicate<BlockState> BLOCKS_TO_AVOID_PREDICATE = blockState -> blockState.is(ModBlocks.PRIMAL_BLOOM.get()) || blockState.is(ModBlocks.PRIMAL_ORGAN_BLOOM.get());
 	protected static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	protected static final EnhancedIntegerProperty CHARGE = ModBlockProperties.CHARGE;
 	private final MultifaceSpreader spreader = new MultifaceSpreader(new MalignantFleshSpreaderConfig(this));
@@ -88,6 +88,7 @@ public class FleshVeinsBlock extends MultifaceBlock implements SimpleWaterlogged
 		int numFaces = facesSet.cardinality();
 
 		boolean hasAnyBlockToAvoidNearby = LevelUtil.isBlockNearby(level, pos, 2, BLOCKS_TO_AVOID_PREDICATE);
+		boolean hasAnyBoneBlockNearby = LevelUtil.isBlockNearby(level, pos, 2, pBlockState -> pBlockState.is(ModBlocks.PRIMAL_BONE.get()) || pBlockState.is(Blocks.BONE_BLOCK));
 
 		if (numFaces == 1) {
 			CellularNoise cellularNoise = PrimordialEcosystem.getCellularNoise(level);
@@ -97,16 +98,19 @@ public class FleshVeinsBlock extends MultifaceBlock implements SimpleWaterlogged
 			Direction axisDirection = Direction.from3DDataValue(5 - facesSet.nextSetBit(0));
 
 			boolean hasConvertedAnyOtherBlocks = convertDirectNeighborBlock(level, pos, axisDirection, directNeighbors, cellularNoise, noiseValue);
-
 			if (!hasConvertedAnyOtherBlocks && !hasAnyBlockToAvoidNearby && directNeighbors > 2) {
 				if (noiseValue >= cellularNoise.borderThreshold()) {
 					return convertSelfIntoSlabBlock(level, pos, axisDirection.getOpposite());
 				}
-				else if (noiseValue < cellularNoise.coreThreshold() && (PrimordialEcosystem.getRandomWithSeed(pos).nextFloat() <= 0.3f - nearBoundingCenterPct) && (LevelUtil.getMaxBrightness(level, pos) > 5)) {
-					return convertSelfIntoBloom(level, pos, axisDirection);
+				else if (noiseValue < cellularNoise.coreThreshold()) {
+					if (PrimordialEcosystem.getRandomWithSeed(pos).nextFloat() <= 0.4f - nearBoundingCenterPct && LevelUtil.getMaxBrightness(level, pos) > 5) {
+						if (hasAnyBoneBlockNearby) {
+							return convertSelfIntoOrganBloom(level, pos, axisDirection);
+						}
+						return convertSelfIntoBloom(level, pos, axisDirection);
+					}
 				}
 			}
-
 			return hasConvertedAnyOtherBlocks;
 		}
 
@@ -225,6 +229,21 @@ public class FleshVeinsBlock extends MultifaceBlock implements SimpleWaterlogged
 
 	protected static boolean convertSelfIntoBloom(ServerLevel level, BlockPos pos, Direction direction) {
 		BloomBlock bloomBlock = ModBlocks.PRIMAL_BLOOM.get();
+
+		BlockPos posBelow = pos.relative(direction);
+		BlockState stateBelow = level.getBlockState(posBelow);
+		boolean mayPlace = bloomBlock.mayPlaceOn(level, posBelow, stateBelow, Direction.UP);
+
+		if (mayPlace && !LevelUtil.isBlockNearby(level, pos, 4, blockState -> blockState.is(bloomBlock)) && bloomBlock.hasUnobstructedAim(level, pos, direction.getOpposite())) {
+			BlockState stateForPlacement = bloomBlock.getStateForPlacement(level, pos, direction.getOpposite());
+			return level.setBlock(pos, stateForPlacement, Block.UPDATE_CLIENTS);
+		}
+
+		return false;
+	}
+
+	protected static boolean convertSelfIntoOrganBloom(ServerLevel level, BlockPos pos, Direction direction) {
+		BloomBlock bloomBlock = ModBlocks.PRIMAL_ORGAN_BLOOM.get();
 
 		BlockPos posBelow = pos.relative(direction);
 		BlockState stateBelow = level.getBlockState(posBelow);
@@ -500,8 +519,7 @@ public class FleshVeinsBlock extends MultifaceBlock implements SimpleWaterlogged
 			setCharge(level, pos, state, charge);
 
 			Vec3 motion = new Vec3((level.random.nextFloat() - 0.5d) * 0.1d, level.random.nextFloat() * 0.1d + 0.15d, (level.random.nextFloat() - 0.5d) * 0.1d);
-			((ServerLevel) level).sendParticles(new ItemParticleOption(ParticleTypes.ITEM, stack), itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 8, motion.x, motion.y, motion.z, 0.05f);
-
+			((ServerLevel) level).sendParticles(ParticleTypes.HEART, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 3, motion.x, motion.y, motion.z, 0.05f);
 			level.playSound(null, pos, ModSoundEvents.DECOMPOSER_EAT.get(), SoundSource.BLOCKS, 0.6f, 0.15f + level.random.nextFloat() * 0.5f);
 		}
 	}

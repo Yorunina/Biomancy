@@ -64,7 +64,7 @@ public class BloomBlock extends WaterloggedFacingBlock implements IPlantable {
 		return stages[age];
 	}
 
-	private static int getGrowthSpeed(ServerLevel level, BlockPos pos) {
+	public static int getGrowthSpeed(ServerLevel level, BlockPos pos) {
 		int veins = PrimordialEcosystem.countMalignantVeinsAroundPos(level, pos);
 		int maxVeins = 3 * 3 * 3 - 1;
 		return Math.max(maxVeins - veins, 0) + 1;

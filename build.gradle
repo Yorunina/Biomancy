@@ -232,10 +232,13 @@ dependencies {
 	runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}") // at runtime, use the full JEI jar
 
 	// KubeJS
-	compileOnly fg.deobf("dev.latvian.mods:kubejs-forge:2001.6.5-build.20")
-	compileOnly fg.deobf("dev.latvian.mods:rhino-forge:2001.2.3-build.10")
-	compileOnly fg.deobf("dev.architectury:architectury-forge:9.1.12")
+//	compileOnly fg.deobf("dev.latvian.mods:kubejs-forge:2001.6.5-build.20")
+//	compileOnly fg.deobf("dev.latvian.mods:rhino-forge:2001.2.3-build.10")
+//	compileOnly fg.deobf("dev.architectury:architectury-forge:9.1.12")
 
+	compileOnly fg.deobf("curse.maven:architectury-forge-419699:5137938")
+	compileOnly fg.deobf("curse.maven:rhino-416294:6186971")
+	compileOnly fg.deobf("curse.maven:kubejs-forge-238086:5853326")
 	// needs to be commented out for datagen to work
 //	runtimeOnly fg.deobf("dev.latvian.mods:kubejs-forge:2001.6.5-build.20")
 //	runtimeOnly fg.deobf("dev.latvian.mods:rhino-forge:2001.2.3-build.10")

@@ -35,7 +35,7 @@ import java.util.function.Predicate;
 
 public abstract class EaterFleshBlob extends FleshBlob implements FoodEater {
 
-	public static final Predicate<ItemEntity> ITEM_ENTITY_FILTER = itemEntity -> FindItemGoal.ITEM_ENTITY_FILTER.test(itemEntity) && itemEntity.getItem().isEdible();
+	public static final Predicate<ItemEntity> ITEM_ENTITY_FILTER = itemEntity -> FindItemGoal.ITEM_ENTITY_FILTER.test(itemEntity) && (itemEntity.getItem().isEdible() || canHoldOrganItem(itemEntity.getItem()));
 	protected static final EntityDataAccessor<Boolean> IS_EATING = SynchedEntityData.defineId(EaterFleshBlob.class, EntityDataSerializers.BOOLEAN);
 
 	protected EaterFleshBlob(EntityType<? extends EaterFleshBlob> entityType, Level level) {

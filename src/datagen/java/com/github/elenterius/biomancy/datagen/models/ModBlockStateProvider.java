@@ -129,6 +129,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 		wallBlockWithItem(ModBlocks.MALIGNANT_FLESH_WALL, ModBlocks.MALIGNANT_FLESH);
 		veinsBlock(ModBlocks.MALIGNANT_FLESH_VEINS);
 		malignantBloom(ModBlocks.PRIMAL_BLOOM);
+		malignantBloom(ModBlocks.PRIMAL_ORGAN_BLOOM);
+
 		orifice(ModBlocks.PRIMAL_ORIFICE);
 		axisBlockWithItem(ModBlocks.PRIMAL_BONE);
 

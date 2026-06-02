@@ -1,6 +1,6 @@
 {
   "type": "biomancy:bio_forging",
-  "bio_forge_tab": "biomancy:blocks",
+  "bio_forge_tab": "biomancy:misc",
   "ingredients": [
     {
       "item": "biomancy:flesh_bits"

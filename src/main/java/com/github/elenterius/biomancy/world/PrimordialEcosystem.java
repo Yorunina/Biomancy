@@ -32,6 +32,8 @@ import java.util.Set;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
+import static com.github.elenterius.biomancy.block.veins.FleshVeinsBlock.BLOCKS_TO_AVOID_PREDICATE;
+
 public final class PrimordialEcosystem {
 
 	private static final RandomSource random = RandomSource.create();
