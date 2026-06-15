@@ -123,7 +123,12 @@ public abstract class MachineBlockEntity<R extends ProcessingRecipe, S extends R
 					}
 					else if (!state.isCraftingCanceled()) { // something is being crafted, check that the crafting goals match
 						R prevCraftingGoal = state.getCraftingGoalRecipe(level).orElse(null);
-						if (prevCraftingGoal == null || !craftingGoal.isRecipeEqual(prevCraftingGoal)) {
+						if (prevCraftingGoal == null) {
+							if (!state.hasSameRecipeId(craftingGoal)) {
+								state.cancelCrafting();
+							}
+						}
+						else if (!craftingGoal.isRecipeEqual(prevCraftingGoal)) {
 							state.cancelCrafting();
 						}
 					}

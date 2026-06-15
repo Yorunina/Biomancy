@@ -9,8 +9,8 @@
     {
       "countRange": {
         "type": "uniform",
-        "max": 1,
-        "min": -2
+        "max": 3,
+        "min": 1
       },
       "item": "biomancy:acid_extract"
     },

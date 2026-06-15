@@ -63,25 +63,25 @@ public final class MobSpawnHandler {
 		AgeableMob child = event.getChild();
 
 		if (child instanceof Pig) {
-			float p = (parentA.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.1f : 0f) + (parentB.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.1f : 0f);
+			float p = (parentA.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.2f : 0f) + (parentB.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.2f : 0f);
 			if (p > 0f && parentA.getRandom().nextFloat() < p) {
 				event.setChild(ModEntityTypes.FLESH_PIG.get().create(parentA.level()));
 			}
 		}
 		else if (child instanceof Cow) {
-			float p = (parentA.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.1f : 0f) + (parentB.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.1f : 0f);
+			float p = (parentA.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.2f : 0f) + (parentB.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.2f : 0f);
 			if (p > 0f && parentA.getRandom().nextFloat() < p) {
 				event.setChild(ModEntityTypes.FLESH_COW.get().create(parentA.level()));
 			}
 		}
 		else if (child instanceof Chicken) {
-			float p = (parentA.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.1f : 0f) + (parentB.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.1f : 0f);
+			float p = (parentA.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.2f : 0f) + (parentB.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.2f : 0f);
 			if (p > 0f && parentA.getRandom().nextFloat() < p) {
 				event.setChild(ModEntityTypes.FLESH_CHICKEN.get().create(parentA.level()));
 			}
 		}
 		else if (child instanceof Sheep) {
-			float p = (parentA.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.1f : 0f) + (parentB.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.1f : 0f);
+			float p = (parentA.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.2f : 0f) + (parentB.hasEffect(ModMobEffects.LIBIDO.get()) ? 0.2f : 0f);
 			if (p > 0f) {
 				if (parentA.getRandom().nextFloat() < p) {
 					event.setChild(ModEntityTypes.FLESH_SHEEP.get().create(parentA.level()));

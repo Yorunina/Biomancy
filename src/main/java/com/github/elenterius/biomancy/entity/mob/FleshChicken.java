@@ -82,7 +82,7 @@ public class FleshChicken extends Chicken implements RangedAttackMob, GeoEntity 
 	public ItemEntity spawnAtLocation(ItemLike item) {
 		if (item == Items.EGG) {
 			if (level() instanceof ServerLevel serverLevel) {
-				if (random.nextFloat() <= 0.4f) {
+				if (random.nextFloat() <= 0.2f) {
 					ModBlocks.ACID_SPLATTER.get().placeSmallSplatter(serverLevel, blockPosition(), Direction.UP, random);
 					return null;
 				}
@@ -102,7 +102,6 @@ public class FleshChicken extends Chicken implements RangedAttackMob, GeoEntity 
 		if (otherParent.getClass() != getClass() && random.nextFloat() < 0.15f) {
 			return (Chicken) otherParent.getBreedOffspring(level, this);
 		}
-
 		return ModEntityTypes.FLESH_CHICKEN.get().create(level);
 	}
 

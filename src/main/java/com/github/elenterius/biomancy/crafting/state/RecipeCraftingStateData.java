@@ -67,6 +67,10 @@ public abstract class RecipeCraftingStateData<T extends ProcessingRecipe> implem
 		return Optional.empty();
 	}
 
+	public boolean hasSameRecipeId(ProcessingRecipe other) {
+		return recipeId != null && recipeId.equals(other.getId());
+	}
+
 	public void setCraftingGoalRecipe(T recipe, Container inputInventory) {
 		recipeId = recipe.getId();
 		timeForCompletion = recipe.getCraftingTimeTicks(inputInventory);
