@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.*;
@@ -65,7 +66,7 @@ public final class ModRecipes {
 	}
 
 	private static void registerBrewingRecipe(Item reactant, Potion potionBase, Potion potionResult) {
-		BrewingRecipeRegistry.addRecipe(new BrewingRecipe(createPotionIngredient(potionBase), Ingredient.of(reactant), createPotionStack(potionResult)));
+		PotionBrewing.addMix(potionBase, reactant, potionResult);
 	}
 
 	private static ItemStack createPotionStack(Supplier<Potion> supplier) {

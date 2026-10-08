@@ -109,6 +109,7 @@ public class InjectorScreen extends Screen {
 
 	@Override
 	public boolean mouseClicked(double mouseX, double mouseY, int button) {
+		BiomancyMod.LOGGER.info("[InjectorDiag] click hand={} ticks={} button={} cacheSize={}", itemHoldingHand, ticks, button, cachedStacks == null ? -1 : cachedStacks.size());
 		if (cachedStacks == null || cachedStacks.isEmpty()) {
 			onClose();
 			return false;
@@ -133,6 +134,7 @@ public class InjectorScreen extends Screen {
 			boolean isMouseInSection = mouseAngle >= currentAngle - angleIncrement / 2f && mouseAngle < currentAngle + angleIncrement / 2f;
 			if (isMouseInSection) {
 				int idx = cachedStacks.getOrDefault(entry.getKey(), CANCEL_ID);
+				BiomancyMod.LOGGER.info("[InjectorDiag] selected hand={} inventorySlot={} item={} count={}", itemHoldingHand, idx, entry.getKey().getItem(), entry.getKey().getCount());
 				if (idx != CANCEL_ID) {
 					ModNetworkHandler.sendKeyBindPressToServer(itemHoldingHand, (byte) idx);
 				}

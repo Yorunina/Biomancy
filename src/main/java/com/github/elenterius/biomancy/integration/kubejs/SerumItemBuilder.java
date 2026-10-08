@@ -17,6 +17,8 @@ import net.minecraft.world.level.Level;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static com.github.elenterius.biomancy.init.tags.ModItemTags.CUSTOM_SERUM_ITEM;
+
 public class SerumItemBuilder extends ItemBuilder {
 
 	public transient ResourceLocation serumId;
@@ -67,7 +69,7 @@ public class SerumItemBuilder extends ItemBuilder {
 
 		@Override
 		public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-			tooltip.addAll(ClientTextUtil.getItemInfoTooltip(stack));
+			if (!stack.is(CUSTOM_SERUM_ITEM)) tooltip.addAll(ClientTextUtil.getItemInfoTooltip(stack));
 		}
 
 		@Override

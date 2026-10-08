@@ -23,6 +23,7 @@ public final class ModItemTags {
 	public static final TagKey<Item> ORGAN = TagKey.create(Registries.ITEM, new ResourceLocation("kubejs", "organ"));
 	public static final TagKey<Item> CANNOT_BE_DIGESTED_IN_ACID = tag("cannot_be_digested_in_acid");
 	public static final TagKey<Item> CANNOT_BE_EATEN_BY_CRADLE = tag("cannot_be_eaten_by_cradle");
+	public static final TagKey<Item> CUSTOM_SERUM_ITEM = tag("custom_serum_item");
 
 	private ModItemTags() {}
 

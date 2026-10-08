@@ -179,9 +179,13 @@ public class InjectorItem extends Item implements SerumInjector, ItemTooltipStyl
 		final ItemStack foundStack = playerInventory.getItem(slotIndex);
 
 		Item item = foundStack.getItem();
+		BiomancyMod.LOGGER.info("[InjectorDiag] fill slot={} serumItem={} count={} serumContainer={}", slotIndex, item, foundStack.getCount(), item instanceof SerumContainer);
 		if (!(item instanceof SerumContainer)) return;
 
-		getItemHandler(injector).ifPresent(handler -> {
+		Optional<LargeSingleItemStackHandler> diagnosticHandler = getItemHandler(injector);
+		BiomancyMod.LOGGER.info("[InjectorDiag] container present={} injectorInventory={}", diagnosticHandler.isPresent(), injector.getTagElement("inventory"));
+		diagnosticHandler.ifPresent(handler -> {
+			BiomancyMod.LOGGER.info("[InjectorDiag] before insert storedItem={} storedCount={} amount={} capacity={}", handler.getStack().getItem(), handler.getStack().getCount(), handler.getAmount(), handler.getMaxAmount());
 			ItemStack oldStack = ItemStack.EMPTY;
 			if (!handler.getStack().isEmpty() && !ItemHandlerHelper.canItemStacksStack(foundStack, handler.getStack())) {
 				oldStack = handler.extractItem(handler.getMaxAmount(), false);
@@ -206,6 +210,7 @@ public class InjectorItem extends Item implements SerumInjector, ItemTooltipStyl
 			if (!oldStack.isEmpty()) {
 				playerInventory.placeItemBackInInventory(oldStack);
 			}
+			BiomancyMod.LOGGER.info("[InjectorDiag] after insert storedItem={} storedCount={} amount={} remainderCount={} injectorInventory={}", handler.getStack().getItem(), handler.getStack().getCount(), handler.getAmount(), playerInventory.getItem(slotIndex).getCount(), injector.getTagElement("inventory"));
 		});
 	}
 

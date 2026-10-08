@@ -1,5 +1,6 @@
 package com.github.elenterius.biomancy.network;
 
+import com.github.elenterius.biomancy.BiomancyMod;
 import com.github.elenterius.biomancy.item.KeyPressListener;
 import com.google.common.primitives.UnsignedBytes;
 import net.minecraft.network.FriendlyByteBuf;
@@ -27,6 +28,7 @@ public class KeyPressMessage {
 	public static void handle(KeyPressMessage packet, Supplier<NetworkEvent.Context> ctx) {
 		ctx.get().enqueueWork(() -> {
 			ServerPlayer player = ctx.get().getSender();
+			BiomancyMod.LOGGER.info("[InjectorDiag] packet received senderPresent={} equipmentSlot={} flag={}", player != null, UnsignedBytes.toInt(packet.slotIndex), packet.flag);
 			if (player != null) {
 				ServerLevel level = player.serverLevel();
 				KeyPressListener.onReceiveKeybindingPacket(level, player, UnsignedBytes.toInt(packet.slotIndex), packet.flag); //TODO: add version which is not tied to EquipmentSlotType

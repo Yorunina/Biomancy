@@ -1,5 +1,6 @@
 package com.github.elenterius.biomancy.item;
 
+import com.github.elenterius.biomancy.BiomancyMod;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -15,12 +16,14 @@ public interface KeyPressListener {
 		EquipmentSlot slotType = getEquipmentSlotTypeFrom(slotIndex);
 		if (slotType != null) {
 			ItemStack heldStack = player.getItemBySlot(slotType);
+			BiomancyMod.LOGGER.info("[InjectorDiag] dispatch equipmentSlot={} item={} listener={} cooldown={} flag={}", slotType, heldStack.getItem(), heldStack.getItem() instanceof KeyPressListener, player.getCooldowns().isOnCooldown(heldStack.getItem()), flag);
 			if ((heldStack.getItem() instanceof KeyPressListener keyListener) && !(player.getCooldowns().isOnCooldown(heldStack.getItem()))) {
 				keyListener.onServerReceiveKeyPress(heldStack, world, player, flag);
 			}
 		}
 		else {
 			ItemStack stackInSlot = player.getInventory().getItem(slotIndex);
+			BiomancyMod.LOGGER.info("[InjectorDiag] dispatch inventorySlot={} item={} listener={} cooldown={} flag={}", slotIndex, stackInSlot.getItem(), stackInSlot.getItem() instanceof KeyPressListener, player.getCooldowns().isOnCooldown(stackInSlot.getItem()), flag);
 			if (!stackInSlot.isEmpty() && (stackInSlot.getItem() instanceof KeyPressListener keyListener) && !(player.getCooldowns().isOnCooldown(stackInSlot.getItem()))) {
 				keyListener.onServerReceiveKeyPress(stackInSlot, world, player, flag);
 			}
